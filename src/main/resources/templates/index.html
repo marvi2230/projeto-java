@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Produto</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+
+<style>
+	.img_size{
+		width:100px;
+	}
+</style>
+<body>
+	<div class="container my-2" align="center">
+
+		<h3>Lista de produtos</h3>
+		<a th:href="@{/salvarproduto}" class="btn btn-primary btn-sm mb-3">Adicionar um produto</a>
+		<table style="width: 80%" border="1"
+			class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Nome produto</th>
+					<th>Descrição</th>
+					<th>Quantidade</th>
+					<th>Preço</th>
+					<th>Url da imagem </th>
+					<th>Opções </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="produto:${allList}">
+					<td th:text="${produto.name}"></td>
+					<td th:text="${produto.descricao}"></td>
+					<td th:text="${produto.quantidade}"></td>
+					<td th:text="${produto.preco}"></td>
+					<td><img class="img_size" th:src="${produto.urlImagem}"></td>
+					<td><a th:href="@{/showFormForUpdate/{id}(id=${produto.id})}"
+						class="btn btn-primary">Editar</a> <a
+						th:href="@{/deleteProduto/{id}(id=${produto.id})}"
+						class="btn btn-danger">Deletar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

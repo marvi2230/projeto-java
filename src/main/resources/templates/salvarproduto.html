@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de produtos</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Cadastro de produtos</h1>
+		<hr>
+		<h2>Salvar produto</h2>
+
+		<form action="#" th:action="@{/save}" th:object="${produto}"
+			method="POST">
+			<input type="text" th:field="*{name}" placeholder="Nome do Produto"
+				class="form-control mb-4 col-4">
+				 
+			<input type="text"
+				th:field="*{descricao}" placeholder="Descrição do produto"
+				class="form-control mb-4 col-4">
+				
+			<input type="number"
+				th:field="*{quantidade}" placeholder="Quantidade"
+				class="form-control mb-4 col-4">
+				
+			<input type="number"
+				th:field="*{preco}" step="0.01" placeholder="Preço do produto"
+				class="form-control mb-4 col-4">
+			
+			<input type="text"
+				th:field="*{urlImagem}" placeholder="Url da imagem"
+				class="form-control mb-4 col-4">
+
+			<button type="submit" class="btn btn-info col-2">Salvar</button>
+		</form>
+
+		<hr>
+
+		<a th:href="@{/}"> Voltar para a listagem de produtos</a>
+	</div>
+</body>
+</html>
